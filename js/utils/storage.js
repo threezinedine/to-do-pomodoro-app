@@ -6,12 +6,7 @@ export const FILTER = "filter_key"
 export function getLocalStorage(key) {
     const data = localStorage.getItem(key)
     if (data) {
-        switch (key) {
-            case TASKS_KEY:
-                return JSON.parse(data)
-            case FILTER:
-                return data
-        }
+        return JSON.parse(data)
     } else {
         switch (key) {
             case TASKS_KEY: 
