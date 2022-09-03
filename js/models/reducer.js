@@ -1,6 +1,7 @@
 import {dispatch} from "../main.js"
 import { TASKS_KEY, FILTER, getLocalStorage, saveLocalStorage } from "../utils/storage.js"
 import { EMPTY_TASKS } from "./data.js"
+import { WORKING_TIME } from "./data.js"
 
 const $ = document.querySelector.bind(document)
 
@@ -182,6 +183,7 @@ const methods = {
         for (const weekDay in state.tasks) {
             state.tasks[weekDay].forEach((curr) => {
                 curr.complete = false
+                curr.remainTime = WORKING_TIME
             })
         } 
         saveLocalStorage(TASKS_KEY, state.tasks)
