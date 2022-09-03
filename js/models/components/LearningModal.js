@@ -1,5 +1,6 @@
 import html from "../../cores/cores.js"
 import { connector } from "../../main.js"
+import { WORKING_TIME, SHORT_BREAK_TIME, LONG_BREAK_TIME } from "../data.js"
 
 
 function LearningModal(state) {
@@ -20,17 +21,17 @@ function LearningModal(state) {
             switch (state.workingMode) {
                 case 'working': 
                     if (! state.workingTask?.remainTime)
-                        state.workingTask.remainTime = 5
+                        state.workingTask.remainTime = WORKING_TIME
                     return getTimeString(state.workingTask.remainTime)
 
                 case 'short break':
                     if (state.shortBreakTime === null) {
-                        state.shortBreakTime = 3
+                        state.shortBreakTime = SHORT_BREAK_TIME
                     }
                     return getTimeString(state.shortBreakTime)
                 case 'long break':
                     if (state.longBreakTime === null) {
-                        state.longBreakTime = 4
+                        state.longBreakTime = LONG_BREAK_TIME
                     }
                     return getTimeString(state.longBreakTime)
             }
