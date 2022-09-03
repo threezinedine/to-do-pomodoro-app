@@ -1,0 +1,296 @@
+.page-title {
+    font-size: 3rem;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin: 30px;
+    padding-bottom: 60px;
+}
+
+
+.to-do-container {
+    margin: 25px 30px;
+}
+
+
+.to-do-daily {
+    max-width: 400px;
+    background-color: #fff;
+    padding: 20px 15px;
+    margin: 0px 8px;
+    border-radius: 5px;
+    height: 100%;
+}
+
+
+.to-do-daily__title {
+    text-align: center;
+    font-size: 2.7rem;
+    margin-bottom: 15px;
+}
+
+
+.to-do-tasks-container {
+    border: 1px solid #ddd;
+    padding-bottom: 16px;
+    border-radius: 5px;
+    -moz-box-shadow:    inset 0 0 5px #666;
+    -webkit-box-shadow: inset 0 0 5px #666;
+    box-shadow:         inset 0 0 5px #666;
+    height: 77%;
+}
+
+
+.daily-task {
+    padding: 5px 5px;
+    justify-content: space-between;
+    margin: 5px 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 5px;
+    border-top: 1px solid #bbb;
+}
+
+
+.daily-task-main__check-box {
+    margin: 5px;
+    width: var(--check-box-size);
+    height: var(--check-box-size);
+    border: 1px solid #ddd;
+}
+
+
+.daily-task-main__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+
+.daily-task-main__title:focus-visible {
+    outline: none;
+}
+
+
+.completed .daily-task-main__title {
+    text-decoration: line-through;
+    color: var(--muted-color);
+}
+
+
+.daily-task-config__option {
+    align-items: center;
+}
+
+
+.daily-task-config__option {
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.daily-task-config__option > i {
+    color: #aaa;
+    cursor: pointer;
+}
+
+
+.daily-task-config__option > i:hover {
+    color: #333;
+}
+
+
+.daily-add-task-btn {
+    font-size: 1.4rem;
+    padding: 4px 0;
+    margin: 0px 10px;
+    background-color: #ddd;
+    border-radius: 5px;
+    margin-top: 16px;
+}
+
+
+.daily-add-task-btn:hover {
+    font-size: 1.5rem;
+    background-color: #aaa;
+}
+
+
+.new-task-modal {
+    display: none;
+    background-color: #fff;
+    padding: 15px 30px 30px 20px;
+    border-radius: 5px;
+    color: #333;
+    min-width: 550px;
+}
+
+
+.new-task-modal.active {
+    display: block;
+}
+
+
+.new-task-modal__title {
+    font-size: 2.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+
+.learning-modal {
+    display: none;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 40px;
+    width: 50%;
+}
+
+
+.learning-modal.active {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.learning-modal__title {
+    font-size: 2.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.mode {
+    display: flex;
+    align-self: center;
+    margin-top: 30px;
+}
+
+
+.mode__element {
+    font-size: 1.3rem; 
+}
+
+
+.mode__element--active {
+    background-color: rgba(0, 147, 233, .2);
+}
+
+
+.learning-modal__digital-clock {
+    align-self: center;
+    font-size: 9rem;
+    font-family: 'Orbitron';
+    margin: 30px 0px;
+    color: #0093E9;
+}
+
+
+.learning-modal__control-btn {
+    font-size: 2.5rem;
+    font-family: 'Roboto';
+    background-color: #0093E9;
+    width: 50%;
+    color: #fff;
+    align-self: center;
+    border-bottom: 5px solid #2e50d9;
+    border-left: 5px solid #4769e6;
+}
+
+
+.learning-modal__control-btn--running {
+    border-bottom: none !important;
+    border-left: none !important;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+
+.option-bar-container {
+    position: fixed;
+    right: 0;
+    top: 5%;
+    font-size: 2.4rem;
+    border-radius: 5px;
+    background-color: #7FDBFF;
+    color: #fff;
+    transition: all 2s linear;
+    z-index: 1000;
+}
+
+
+.option-bar-symbol {
+    background-color: transparent;
+    transition: all 2s linear;
+}
+
+
+.option-bar {
+    display: none;
+    background-color: transparent;
+    transition: all 1s linear;
+}
+
+
+.option-bar-container:hover > .option-bar-symbol {
+    display: none;
+}
+
+
+.option-bar-container:hover > .option-bar{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+
+.option-bar__element,
+.option-bar-dropdown-symbol {
+    color: #ddd;
+    transition: all .1s linear;
+}
+
+
+.option-bar__element:hover,
+.option-bar-dropdown-symbol:hover,
+.option-bar-dropdown:hover .option-bar-dropdown-symbol{
+    color: #fff;
+    font-size: 2.7rem;
+}
+
+
+.option-bar-dropdown__element:hover {
+    background-color: #7FDBFF;
+    border-radius: 50%;
+    color: #000 !important;
+}
+
+
+.option-bar-dropdown-option-container {
+    position: absolute;
+    left: 0px;
+    background-color: #fff;
+    display: none;
+    border-radius: 5px;
+}
+
+
+.option-bar-dropdown:hover .option-bar-dropdown-option-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+}
+
+
+.option-bar-dropdown__element {
+    color: #000;
+    width: 50px;
+    height: 50px;
+}
