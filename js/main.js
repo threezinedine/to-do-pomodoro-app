@@ -2,7 +2,7 @@ import { Storage } from "./cores/cores.js";
 import reducer from "./models/reducer.js";
 import logger from "./utils/logger.js";
 
-export const storage = Storage(logger(reducer))
+export const storage = Storage(reducer)
 let { mount, dispatch, connector } = storage
 
 connector = connector.bind(storage)

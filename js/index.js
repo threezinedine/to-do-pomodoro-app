@@ -25,7 +25,6 @@ function App(state) {
                 ${AddNewTaskModal()}
                 ${LearningModal()}
             </div>
-            <audio autoplay ${state.needSound ? '': 'muted'}><source src="../sound/finish.mp3"/></audio>
             <audio autoplay ${state.needSound ? '': 'muted'}><source src="../to-do-pomodoro-app/sound/finish.mp3"/></audio>
             ${OptionBar()}
         </div>
@@ -35,3 +34,6 @@ function App(state) {
 mount.call(storage, app, connector(App))
 
 window.dispatch = dispatch.bind(storage)
+
+
+//<audio autoplay ${state.needSound ? '': 'muted'}><source src="../sound/finish.mp3"/></audio>
