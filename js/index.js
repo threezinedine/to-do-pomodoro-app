@@ -13,7 +13,6 @@ function App(state) {
 
     const func = (e) => {
         e.stopPropagation()
-        console.log(e)
     }
 
     return html`

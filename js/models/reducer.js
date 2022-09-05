@@ -1,7 +1,7 @@
 import {dispatch} from "../main.js"
 import { TASKS_KEY, FILTER, getLocalStorage, saveLocalStorage } from "../utils/storage.js"
 import { EMPTY_TASKS } from "./data.js"
-import { WORKING_TIME } from "./data.js"
+import { WORKING_TIME, SHORT_BREAK_TIME, LONG_BREAK_TIME } from "./data.js"
 
 const $ = document.querySelector.bind(document)
 
@@ -23,6 +23,7 @@ const initState = {
     shortBreakTime: null,
     longBreakTime: null,
     numTasks: 0,
+    startTime: null,
     intervalId: null,
     workingMode: 'working',
     filter: getLocalStorage(FILTER),
@@ -91,17 +92,26 @@ const methods = {
         state.running = !state.running
         if (state.running) {
             state.intervalId = setInterval(updateWorking, 1000)
+            state.startTime = new Date()
+            if (!state.workingTask.actualRemain) {
+                state.workingTask.actualRemain = WORKING_TIME
+            }
         } else {
+            state.workingTask.actualRemain -= Math.round((new Date() - state.startTime) / 1000)
             clearInterval(state.intervalId)
             state.intervalId = null
+            state.startTime = null
         }
         return state
     },
     updateWorkingMode(state) {
+        const current = new Date()
+        const updateTime = Math.round((current - state.startTime) / 1000)
+
         if (state.running) {
             switch(state.workingMode) {
                 case 'working': 
-                    state.workingTask.remainTime -= 1 
+                    state.workingTask.remainTime = state.workingTask.actualRemain - updateTime
                     if (state.workingTask.remainTime === 0) {
                         state.needSound = true
                         setTimeout(()=> {
@@ -125,7 +135,7 @@ const methods = {
                     saveLocalStorage(TASKS_KEY, state.tasks)
                     break
                 case 'short break':
-                    state.shortBreakTime -= 1
+                    state.shortBreakTime = SHORT_BREAK_TIME - updateTime
                     if (state.shortBreakTime === 0) {
                         state.needSound = true
                         setTimeout(()=> {
@@ -138,7 +148,7 @@ const methods = {
                     }
                     break
                 case 'long break':
-                    state.longBreakTime -= 1
+                    state.longBreakTime = LONG_BREAK_TIME - updateTime
                     if (state.longBreakTime === 0) {
                         state.needSound = true
                         setTimeout(()=> {
