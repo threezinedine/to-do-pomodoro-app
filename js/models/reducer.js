@@ -112,7 +112,7 @@ const methods = {
             switch(state.workingMode) {
                 case 'working': 
                     state.workingTask.remainTime = state.workingTask.actualRemain - updateTime
-                    if (state.workingTask.remainTime === 0) {
+                    if (state.workingTask.remainTime <= 0) {
                         state.needSound = true
                         setTimeout(()=> {
                             state.needSound = false
@@ -136,7 +136,7 @@ const methods = {
                     break
                 case 'short break':
                     state.shortBreakTime = SHORT_BREAK_TIME - updateTime
-                    if (state.shortBreakTime === 0) {
+                    if (state.shortBreakTime <= 0) {
                         state.needSound = true
                         setTimeout(()=> {
                             state.needSound = false
@@ -149,7 +149,7 @@ const methods = {
                     break
                 case 'long break':
                     state.longBreakTime = LONG_BREAK_TIME - updateTime
-                    if (state.longBreakTime === 0) {
+                    if (state.longBreakTime <= 0) {
                         state.needSound = true
                         setTimeout(()=> {
                             state.needSound = false
